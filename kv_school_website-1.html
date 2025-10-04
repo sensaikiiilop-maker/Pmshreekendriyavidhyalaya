@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM Shree Kendriya Vidyalaya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #c9a96e 0%, #8b7355 50%, #2c5530 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border: 3px solid #c9a96e;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .school-info h1 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .sanskrit-motto {
+            color: #c9a96e;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .motto-translation {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: linear-gradient(45deg, #c9a96e, #8b7355);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .mission-statement {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px auto;
+            max-width: 700px;
+            border-left: 4px solid #c9a96e;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .grade-lookup {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .grade-lookup h3 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        select, input {
+            padding: 12px 16px;
+            border: 2px solid #e0e6ed;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #c9a96e;
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
+        }
+
+        .search-btn {
+            grid-column: 1 / -1;
+            background: linear-gradient(45deg, #c9a96e, #8b7355);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.3);
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .result.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .result.success {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            color: white;
+            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.3);
+        }
+
+        .result.error {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #c9a96e, #8b7355);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card h4 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .grade-lookup {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Sun rays -->
+                            <g stroke="#c9a96e" stroke-width="8" fill="none" stroke-linecap="round">
+                                <!-- Central rays -->
+                                <path d="M200 50 Q190 80, 200 110 Q210 80, 200 50"/>
+                                <path d="M200 290 Q190 320, 200 350 Q210 320, 200 290"/>
+                                <path d="M350 200 Q320 190, 290 200 Q320 210, 350 200"/>
+                                <path d="M110 200 Q80 190, 50 200 Q80 210, 110 200"/>
+                                
+                                <!-- Diagonal rays -->
+                                <path d="M318 82 Q295 100, 282 118 Q305 100, 318 82"/>
+                                <path d="M118 282 Q100 305, 82 318 Q100 295, 118 282"/>
+                                <path d="M282 282 Q305 300, 318 318 Q295 300, 282 282"/>
+                                <path d="M82 82 Q100 105, 118 118 Q100 95, 82 82"/>
+                                
+                                <!-- Additional outer rays -->
+                                <path d="M200 30 Q195 60, 200 90 Q205 60, 200 30"/>
+                                <path d="M200 310 Q195 340, 200 370 Q205 340, 200 310"/>
+                                <path d="M370 200 Q340 195, 310 200 Q340 205, 370 200"/>
+                                <path d="M90 200 Q60 195, 30 200 Q60 205, 90 200"/>
+                                
+                                <!-- More diagonal rays -->
+                                <path d="M340 60 Q315 80, 300 100 Q325 80, 340 60"/>
+                                <path d="M100 300 Q80 325, 60 340 Q80 315, 100 300"/>
+                                <path d="M300 300 Q325 320, 340 340 Q315 320, 300 300"/>
+                                <path d="M60 60 Q85 80, 100 100 Q75 80, 60 60"/>
+                            </g>
+                            
+                            <!-- Central sun circle -->
+                            <circle cx="200" cy="200" r="40" fill="white" stroke="#c9a96e" stroke-width="3"/>
+                            
+                            <!-- Indian flag colors at bottom -->
+                            <path d="M50 280 Q200 270, 350 280 Q200 290, 50 280" fill="#ff9933"/>
+                            <path d="M50 290 Q200 280, 350 290 Q200 300, 50 290" fill="white"/>
+                            <path d="M50 300 Q200 290, 350 300 Q200 310, 50 300" fill="#138808"/>
+                        </svg>
+                    </div>
+                    <div class="school-info">
+                        <h1>PM Shri Kendriya Vidyalaya</h1>
+                        <p class="sanskrit-motto">तत त्वं पूषन् अपावृणु</p>
+                        <p class="motto-translation">Unveil the Truth, O Sun</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#grades">Check Grades</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero" id="home">
+            <h2>PM SHRI Schools for Rising India</h2>
+            <p>A flagship initiative developing 14,500+ schools nationwide. Our Kendriya Vidyalaya is among the 834 KVs selected as PM SHRI schools, committed to holistic development through the New Education Policy 2020 and 21st-century learning skills.</p>
+            <div class="mission-statement">
+                <strong>"Preparing students for a rapidly changing world by promoting excellence, equity, and innovation in education."</strong>
+            </div>
+            <button class="cta-button" onclick="scrollToGrades()">Check Your PT 2 Results</button>
+        </section>
+
+        <section class="grade-lookup" id="grades">
+            <h3>PT 2 Exam Results</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="examType">Select Exam:</label>
+                    <select id="examType">
+                        <option value="pt2">PT 2 Exam</option>
+                        <option value="annual">Annual Results</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="class">Select Class:</label>
+                    <select id="class">
+                        <option value="">Choose your class</option>
+                        <option value="1">Class 1</option>
+                        <option value="2">Class 2</option>
+                        <option value="3">Class 3</option>
+                        <option value="4">Class 4</option>
+                        <option value="5">Class 5</option>
+                        <option value="6">Class 6</option>
+                        <option value="7">Class 7</option>
+                        <option value="8">Class 8</option>
+                        <option value="9">Class 9</option>
+                        <option value="10">Class 10</option>
+                        <option value="11">Class 11</option>
+                        <option value="12">Class 12</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rollNumber">Roll Number:</label>
+                    <input type="number" id="rollNumber" placeholder="Enter your roll number" min="1" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="section">Section (Optional):</label>
+                    <select id="section">
+                        <option value="">Any Section</option>
+                        <option value="A">Section A</option>
+                        <option value="B">Section B</option>
+                        <option value="C">Section C</option>
+                        <option value="D">Section D</option>
+                    </select>
+                </div>
+                <button class="search-btn" onclick="lookupGrade()">Get My Results</button>
+            </div>
+            <div id="gradeResult" class="result"></div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h4>NCERT-CBSE Curriculum</h4>
+                <p>Following the comprehensive NCERT syllabus with CBSE board affiliation, ensuring standardized quality education across all PM SHRI Kendriya Vidyalayas nationwide.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏛️</div>
+                <h4>Government Excellence</h4>
+                <p>Part of the prestigious Kendriya Vidyalaya Sangathan, serving defense personnel and government employees' children with unwavering commitment to educational excellence.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <h4>PM SHRI Initiative</h4>
+                <p>Selected among 834 Kendriya Vidyalayas for the PM SHRI program, implementing NEP 2020 guidelines and 21st-century pedagogical approaches for holistic development.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PM Shri Kendriya Vidyalaya | Kendriya Vidyalaya Sangathan, Ministry of Education, Government of India</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">तत त्वं पूषन् अपावृणु - Unveil the Truth, O Sun | Part of PM SHRI Schools Initiative</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample student data - in a real application, this would come from a database
+        const pt2ExamData = {
+            "9": {
+                "33": { 
+                    name: "Pratyush Ranjan", 
+                    section: "D",
+                    subjects: {
+                        "Mathematics": { marks: 31, total: 40 },
+                        "Science": { marks: 34, total: 40 },
+                        "SST": { marks: 24, total: 40 },
+                        "Hindi": { marks: 29, total: 40 },
+                        "AI": { marks: 19, total: 25 },
+                        "English": { marks: 32, total: 40 }
+                    },
+                    totalMarks: 159,
+                    totalPossible: 225,
+                    percentage: 70.67,
+                    grade: "B+"
+                }
+            }
+        };
+
+        const studentData = {
+            "1": {
+                "1": { name: "Aarav Sharma", grade: "A+", percentage: 95 },
+                "2": { name: "Diya Patel", grade: "A", percentage: 88 },
+                "3": { name: "Arjun Singh", grade: "B+", percentage: 82 },
+                "4": { name: "Kavya Reddy", grade: "A+", percentage: 94 },
+                "5": { name: "Rohan Gupta", grade: "A", percentage: 87 }
+            },
+            "2": {
+                "1": { name: "Ananya Das", grade: "A+", percentage: 96 },
+                "2": { name: "Karan Joshi", grade: "A", percentage: 89 },
+                "3": { name: "Priya Nair", grade: "B+", percentage: 83 },
+                "4": { name: "Varun Kumar", grade: "A", percentage: 90 },
+                "5": { name: "Ishita Agarwal", grade: "A+", percentage: 93 }
+            },
+            "3": {
+                "1": { name: "Siddharth Mehta", grade: "A", percentage: 86 },
+                "2": { name: "Riya Bansal", grade: "A+", percentage: 95 },
+                "3": { name: "Aditya Verma", grade: "B+", percentage: 81 },
+                "4": { name: "Shreya Kapoor", grade: "A", percentage: 88 },
+                "5": { name: "Ayush Tiwari", grade: "A+", percentage: 92 }
+            },
+            "6": {
+                "1": { name: "Sakshi Pandey", grade: "A+", percentage: 94 },
+                "2": { name: "Harsh Malhotra", grade: "A", percentage: 87 },
+                "3": { name: "Tanvi Shah", grade: "B+", percentage: 84 },
+                "4": { name: "Nikhil Rao", grade: "A", percentage: 89 },
+                "5": { name: "Pooja Bhatt", grade: "A+", percentage: 96 }
+            },
+            "9": {
+                "1": { name: "Rajesh Kumar", grade: "A+", percentage: 95 },
+                "2": { name: "Meera Jain", grade: "A", percentage: 88 },
+                "3": { name: "Vikram Singh", grade: "B+", percentage: 82 },
+                "4": { name: "Deepika Sharma", grade: "A", percentage: 91 },
+                "5": { name: "Abhishek Gupta", grade: "A+", percentage: 93 }
+            },
+            "10": {
+                "1": { name: "Sneha Agarwal", grade: "A+", percentage: 97 },
+                "2": { name: "Rahul Verma", grade: "A", percentage: 89 },
+                "3": { name: "Neha Patel", grade: "B+", percentage: 85 },
+                "4": { name: "Amit Joshi", grade: "A", percentage: 90 },
+                "5": { name: "Priyanka Das", grade: "A+", percentage: 94 }
+            }
+        };
+
+        function lookupGrade() {
+            const examType = document.getElementById('examType').value;
+            const classValue = document.getElementById('class').value;
+            const rollNumber = document.getElementById('rollNumber').value;
+            const section = document.getElementById('section').value;
+            const resultDiv = document.getElementById('gradeResult');
+
+            // Clear previous result
+            resultDiv.classList.remove('show', 'success', 'error');
+
+            if (!classValue || !rollNumber) {
+                showResult('Please select both class and roll number', 'error');
+                return;
+            }
+
+            // Simulate a slight delay for better UX
+            setTimeout(() => {
+                let student = null;
+                
+                if (examType === 'pt2') {
+                    student = pt2ExamData[classValue]?.[rollNumber];
+                    
+                    if (student) {
+                        // Check section if specified
+                        if (section && student.section !== section) {
+                            showResult(
+                                `❌ Student found but in different section.<br>
+                                <strong>${student.name}</strong> is in Section ${student.section}, not Section ${section}.`,
+                                'error'
+                            );
+                            return;
+                        }
+                        
+                        // Create detailed PT2 result display
+                        let subjectDetails = '';
+                        for (const [subject, data] of Object.entries(student.subjects)) {
+                            const percentage = ((data.marks / data.total) * 100).toFixed(1);
+                            subjectDetails += `<div style="margin: 8px 0; padding: 8px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                                <strong>${subject}:</strong> ${data.marks}/${data.total} (${percentage}%)
+                            </div>`;
+                        }
+                        
+                        showResult(
+                            `🎉 PT 2 Exam Results Found!<br><br>
+                            <div style="text-align: left; max-width: 400px; margin: 0 auto;">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <strong style="font-size: 1.1em;">Name:</strong> ${student.name}<br>
+                                    <strong>Class:</strong> ${classValue}${student.section} &nbsp;&nbsp;&nbsp; <strong>Roll No:</strong> ${rollNumber}
+                                </div>
+                                <div style="margin-bottom: 15px;">
+                                    <strong style="color: #2c3e50; font-size: 1.05em;">Subject-wise Marks:</strong>
+                                </div>
+                                ${subjectDetails}
+                                <div style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 10px; text-align: center;">
+                                    <strong>Total:</strong> ${student.totalMarks}/${student.totalPossible}<br>
+                                    <strong>Percentage:</strong> ${student.percentage}%<br>
+                                    <strong>Grade:</strong> ${student.grade}
+                                </div>
+                            </div>`,
+                            'success'
+                        );
+                    } else {
+                        showResult(
+                            '❌ No PT 2 exam record found for this class and roll number combination.<br>Please verify your details or contact the school office.',
+                            'error'
+                        );
+                    }
+                } else {
+                    // Annual results (existing data)
+                    student = studentData[classValue]?.[rollNumber];
+                    
+                    if (student) {
+                        showResult(
+                            `🎉 Annual Results Found!<br>
+                            <strong>Name:</strong> ${student.name}<br>
+                            <strong>Grade:</strong> ${student.grade}<br>
+                            <strong>Percentage:</strong> ${student.percentage}%`,
+                            'success'
+                        );
+                    } else {
+                        showResult(
+                            '❌ No annual result found for this class and roll number combination.<br>Please verify your details or contact the school office.',
+                            'error'
+                        );
+                    }
+                }
+            }, 500);
+        }
+
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('gradeResult');
+            resultDiv.innerHTML = message;
+            resultDiv.className = `result ${type}`;
+            
+            setTimeout(() => {
+                resultDiv.classList.add('show');
+            }, 10);
+        }
+
+        function scrollToGrades() {
+            document.getElementById('grades').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Allow Enter key to trigger search
+        document.getElementById('rollNumber').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                lookupGrade();
+            }
+        });
+
+        // Add some sample data for demonstration
+        window.addEventListener('load', function() {
+            console.log('PM Shree Kendriya Vidyalaya Website Loaded Successfully!');
+            console.log('PT 2 Exam Sample: Class 9, Roll Number 33 (Pratyush Ranjan, Section D)');
+            console.log('Annual Results Sample: Class 10, Roll Number 1 (Sneha Agarwal)');
+        });
+    </script>
+</body>
+</html>
